@@ -1,0 +1,86 @@
+<TabView 
+androidSelectedTabHighlightColor="#F74933">
+    <AbsoluteLayout *tabItem="{title:'Home'}">
+        <Label 
+            *ngIf="!tasks"
+            fontSize="25"
+            left="120"
+            top="50"
+            text="No Tasks Available">
+        </Label>
+        
+        <Label 
+            *ngIf="tasks && tasks.length == 0"
+            fontSize="25"
+            left="120"
+            top="50"
+            text="No Tasks Available">
+        </Label>
+        
+        <Label 
+            *ngIf="tasks && tasks.length > 0"
+            fontWeight="bold"
+            fontSize="25"
+            left="150"
+            top="50"
+            text="Your Tasks">
+        </Label>
+
+        <StackLayout width="100%" top="100" left="0">
+            <StackLayout
+                *ngFor="let t of tasks"
+                (tap)="goToTask(t)">
+
+                <FlexboxLayout style="padding: 5px 20px;" justifyContent="space-between">
+                    <Label class="title" text="{{ t.title }}" textWrap="true"></Label>
+                    <Label
+                        class="badge" 
+                        *ngIf="t.completed == 'no'"
+                        backgroundColor="red" 
+                        text="in-complete">
+                    </Label>
+                    
+                    <Label
+                        *ngIf="t.completed == 'yes'" 
+                        class="badge" 
+                        text="completed">
+                    </Label>
+                </FlexboxLayout>
+                <Label text="{{ t.description }}..." class="description"></Label>
+                
+                <Label class="line"> </Label>
+            </StackLayout>
+        </StackLayout>
+        
+        <GridLayout elevation="10" top="630" left="320" id="btnFab" nsRouterLink="../add-task">
+            <GridLayout>
+                <Label class="fab-dash--1"></Label>
+                <Label class="fab-dash--2"></Label>
+            </GridLayout>
+        </GridLayout>
+    </AbsoluteLayout>   
+
+    <AbsoluteLayout *tabItem="{title:'Setting'}">
+        <Label 
+            top="30"
+            left="130"
+            fontSize="30"
+            fontWeight="bold"
+            text="User Details" textWrap="true"></Label>
+        <GridLayout 
+            top="80"
+            left="50"
+            rows="auto, auto" 
+            columns="120, *">
+
+            <Label textAlignment="right" text="Username : " row="0" col="0"></Label>
+            <Label text="{{ user.username }}" row="0" col="1"></Label>
+
+            <Label textAlignment="right" text="Email : " row="1" col="0"></Label>
+            <Label text="{{ user.email }}" row="1" col="1"></Label>
+        </GridLayout> 
+
+        <Button width="95%" class="btn" backgroundColor="red" top="150" left="0" text="Logout" (tap)="logout()"></Button>
+        
+    </AbsoluteLayout>
+</TabView>

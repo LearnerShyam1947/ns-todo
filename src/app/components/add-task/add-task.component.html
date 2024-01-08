@@ -1,0 +1,13 @@
+<StackLayout>
+    <TextField
+        class="input" 
+        [(ngModel)]="title"
+        hint="Enter title"></TextField>
+
+    <TextView
+        class="input" 
+        [(ngModel)]="description"
+        hint="Enter description"></TextView>
+    
+    <Button class="btn" text="Submit" (tap)="addTask()"></Button>
+</StackLayout>

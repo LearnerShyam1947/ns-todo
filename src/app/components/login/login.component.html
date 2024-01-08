@@ -1,0 +1,30 @@
+<ScrollView>
+    <AbsoluteLayout>
+        <Label 
+            top="200"
+            width="100%"
+            fontSize="35"
+            fontWeight="bold"
+            textAlignment="center"
+            text="Welcome Back">
+        </Label>
+    
+        <StackLayout 
+            top="250"
+            width="100%">    
+            <TextField
+                class="input"
+                [(ngModel)]="user.email"
+                hint="Enter email"></TextField>
+        
+            <TextField
+                class="input"
+                [(ngModel)]="user.password"
+                hint="Enter password" secure="true"></TextField>
+        
+            <Button class="btn" text="Login" (tap)="login()"></Button>
+        
+            <Label textAlignment="center" text="Didn't have an account. Click here" nsRouterLink="../register"></Label>
+        </StackLayout>
+    </AbsoluteLayout>
+</ScrollView>

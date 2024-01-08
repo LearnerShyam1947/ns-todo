@@ -1,0 +1,41 @@
+<AbsoluteLayout width="100%">
+    <Label top="10" left="20" text="Task Title"></Label>
+    <TextField class="input" editable="false"  width="85%" top="20" left="20"  hint="Title" text="{{ task.title }}"></TextField>
+    
+    <Label top="70" left="20" text="Task Description" textWrap="true"></Label>
+    <TextView class="input"  (textChange)="textChanged()" width="85%"  top="80" left="20" hint="Description" [(ngModel)]="description"></TextView>
+
+    
+    <StackLayout left="10" top="200" width="95%">
+        <Button 
+            class="btn" 
+            text="update task"
+            (tap)="updateDescriptionOfTask()"
+            isEnabled="{{ isTextChanged >= 2 }}">
+        </Button>
+        
+        <Button 
+            class="btn" 
+            backgroundColor="green"
+            (tap)="markAsComplete()"
+            text="Mark as completed"
+            *ngIf="task.completed == 'no'">
+        </Button>
+
+        <Button 
+            class="btn" 
+            (tap)="markAsInComplete()"
+            backgroundColor="orangered"
+            text="Mark as not-completed"
+            *ngIf="task.completed == 'yes'">
+        </Button>
+        
+
+        <Button 
+            class="btn" 
+            (tap)="deleteTask()"
+            backgroundColor="red"
+            text="delete task">
+        </Button>
+    </StackLayout>
+</AbsoluteLayout>
